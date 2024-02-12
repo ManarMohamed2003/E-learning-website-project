@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+		<title>Welcome Page</title>
+	</head>
+	<body class="centered-body">
+		<div class="container">
+			{% include 'includes/alert.html' %}
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4 form-container p-4 mt-5">
+					<h2 class="text-center mb-4">Welcome</h2>
+					<form method="post">
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="register_button">Registration</button>
+                        </div>
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="login_button">Login</button>
+                        </div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/close-all-alerts.js') }}"></script>
+	</body>
+</html>

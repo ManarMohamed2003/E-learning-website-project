@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+		<title>{{ user[1] }} - Profile</title>
+	</head>
+	<body>
+		<div class="topnav" id="myTopnav">
+			<a href="{{ url_for('home') }}">Home</a>
+			<a href="{{ url_for('index') }}">Courses</a>
+			<a href="{{ url_for('profile') }}">Profile</a>
+			<a href="{{ url_for('logout') }}">Log Out</a>
+		</div>
+		  <br><br>
+		  <div class="centered-body">
+			<div class="container-fluid">
+			{% include 'includes/alert.html' %}
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4 form-container p-4 mt-5 me-1">
+					<div class="row">
+						<div class="col">
+							<h3>Username: {{ user[1] }}</h3>
+							<h4>E-mail: {{ user[3] }}</h4>
+							{% if role != "s" %}
+							<small>Balance: {{ user[4] }}</small>
+							{% endif %}
+							<br><br>
+							<form method="post">
+								{% if role != "s" %}
+								<button type="submit" class="btn btn-primary float-end" name="button" value="withdraw" >
+									Withdraw Balance
+								</button>
+								{% endif %}
+								{% if role != "i"%}
+								<button type="submit" class="btn btn-primary float-end" name="button" value="My_Courses" >
+									My Courses
+								</button>
+								{% endif %}
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		  </div>
+		
+		<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/close-all-alerts.js') }}"></script>
+	</body>
+</html>

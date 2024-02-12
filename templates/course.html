@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+		<title>{{course[2]}}</title>
+	</head>
+	<body class="">
+		<div class="topnav" id="myTopnav">
+			<a href="{{ url_for('home') }}">Home</a>
+			<a href="{{ url_for('index') }}">Courses</a>
+			<a href="{{ url_for('profile') }}">Profile</a>
+			<a href="{{ url_for('logout') }}">Log Out</a>
+		</div>
+		  <br><br>
+		<div class="container-fluid">
+			{% include 'includes/alert.html' %}
+			<div class="row justify-content-center">
+				<div
+					class="col-md-9 col-lg-9 form-container p-4 mt-5 me-1 border border-3 border-{{ 'danger' if course[6] else 'success'}}"
+				>
+					<div class="row mb-3">
+						<div class="col-3">
+							<img src="{{url_for('static', filename=course[5])}}" alt="" width="150" class="img-fluid" />
+						</div>
+						<div class="col">
+							<form action="{{ url_for('enroll_course',course_id=course[0])}}" method="post">
+								<h2>{{course[2]}}</h2>
+								<p>{{course[3]}}</p>
+								<small>${{course[4]}}</small>
+								<!-- Sending the price of the item in a hidden input -->
+
+								<input type="hidden" name="price" value="{{course[4]}}" />
+								{% if role != "i" %}
+								<button class="btn btn-primary float-end" >Enroll</button>
+								{% endif %}
+							</form>
+						</div>
+					</div>
+					<hr />
+					<div>
+						{% for comment in comments %}
+						<div class="col-md-12 col-lg-12 py-2 px-3 mt-1 border border-3">
+							<h5>{{comment[0]}} | <small>{{comment[2]}}</small></h5>
+							<hr />
+							<p>{{comment[1]}}</p>
+						</div>
+						{% endfor %}
+					</div>
+					<hr />
+					<form class="login-form" method="post" action="{{ url_for('addComment', course_id=course[0]) }}">
+						<div class="mb-3">
+							<textarea
+								type=""
+								class="form-control"
+								placeholder="Comment"
+								required
+								name="comment"
+							></textarea>
+						</div>
+						<button type="submit" class="btn btn-primary">Post Comment</button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/close-all-alerts.js') }}"></script>
+	</body>
+</html>

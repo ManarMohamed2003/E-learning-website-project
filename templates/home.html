@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+		<title>Home Page</title>
+	</head>
+	<body class="centered-body">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4 form-container p-4 mt-5">
+					{% if role == "s" %}
+					<form method="post">
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="courses">Courses</button>
+                        </div>
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="profile">Profile</button>
+                        </div>
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="logout">Log Out</button>
+                        </div>
+					</form>
+					{% elif role == "i" %}
+					<form method="post">
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="upload">Upload</button>
+                        </div>
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="courses">Courses</button>
+                        </div>
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="profile">Profile</button>
+                        </div>
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="logout">Log Out</button>
+                        </div>
+					</form>
+					{% else %}
+					<form method="post">
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="upload">Upload Courses</button>
+                        </div>
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="courses">Courses</button>
+                        </div>
+						<div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="users">Users</button>
+                        </div>
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="profile">Profile</button>
+                        </div>
+                        <div class="mb-4">
+                            <button type="submit" class="btn btn-primary w-100" name="button" value="logout">Log Out</button>
+                        </div>
+					</form>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/close-all-alerts.js') }}"></script>
+	</body>
+</html>
